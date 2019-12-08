@@ -22,7 +22,7 @@ public class Login {
         con = conn.getKoneksi();
         ResultSet rs = null;
         try {
-            String query = "SELECT username, password FROM tb_admin "
+            String query = "SELECT * FROM tb_admin "
                     + "WHERE username = '"+username+"' AND password = '"+password+"'";
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
@@ -32,6 +32,4 @@ public class Login {
             return rs;
         }
     }
-    
-    
 }

@@ -4,12 +4,22 @@ package model;
 
 public class Admin extends Person {
 
-    private String username,password;
+    private String username,password,role;
 
-    public Admin(String username, String password, String nama, String alamat, int noTelp) {
-        super(nama, alamat, noTelp);
+    public Admin(String nama,String alamat,String noTelp,String jenisKelamin,
+            String username,String password,String role) {
+        super(nama,alamat,noTelp,jenisKelamin);
         this.username = username;
         this.password = password;
+        this.role = role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public String getUsername() {

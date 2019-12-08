@@ -3,13 +3,21 @@ package model;
 /** @author faizaaulia */
 
 public class Person {
-    private String nama,alamat;
-    private int noTelp;
+    private String nama,alamat,noTelp,jenisKelamin;
 
-    public Person(String nama, String alamat, int noTelp) {
+    public Person(String nama,String alamat,String noTelp,String jenisKelamin) {
         this.nama = nama;
         this.alamat = alamat;
         this.noTelp = noTelp;
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    public String getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(String jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
     }
 
     public String getNama() {
@@ -28,11 +36,11 @@ public class Person {
         this.alamat = alamat;
     }
 
-    public int getNoTelp() {
+    public String getNoTelp() {
         return noTelp;
     }
 
-    public void setNoTelp(int noTelp) {
+    public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
     }
 }

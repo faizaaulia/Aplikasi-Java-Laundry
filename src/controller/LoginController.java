@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import model.HomeAdmin;
 import model.Login;
 import view.LoginView;
 
@@ -30,11 +31,15 @@ public class LoginController extends MouseAdapter implements ActionListener {
                 String username = view.getUsername();
                 String password = view.getPassword();
                 if (!username.equals("") && !password.equals("")) {
-                    ResultSet rs = model.login(username, password);
+                    ResultSet rs = model.login(username,password);
                     if (rs.next()) {
                         view.dispose();
-                        String nama = rs.getString(2);
-                        new HomeController(nama);
+                        String nama = rs.getString(4);
+                        String role = rs.getString(8);
+                        if (role.equals("1"))
+                            new HomeSuperAdminController(nama);
+                        else
+                            new HomeAdminController(nama);
                     } else {
                         JOptionPane.showMessageDialog(view, "User tidak ditemukan", 
                             "Error", JOptionPane.WARNING_MESSAGE);
@@ -46,7 +51,8 @@ public class LoginController extends MouseAdapter implements ActionListener {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        } else if (source.equals(view.getBtnExit()))
+        }
+        if (source.equals(view.getBtnExit()))
             view.dispose();
     }
 }
