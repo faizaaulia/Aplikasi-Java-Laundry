@@ -96,7 +96,7 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
             String alamat = dataAdminView.getTfAlamat();
             String noTelp = dataAdminView.getTfNoTelp();
             boolean bgNotNull = dataAdminView.getRadioLk().isSelected() || 
-                    dataAdminView.getRadioLk().isSelected();
+                    dataAdminView.getRadioPr().isSelected();
             boolean userExist = false;
             try {
                 if (model.usernameExist(username).next())

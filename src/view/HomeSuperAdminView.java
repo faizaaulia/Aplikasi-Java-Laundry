@@ -68,6 +68,8 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelHi.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
+        labelHi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelHi.setText("Hi, Admin");
 
         btnDataAdmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDataAdmin.setText("Data Admin");
