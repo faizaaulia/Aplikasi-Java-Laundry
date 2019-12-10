@@ -12,9 +12,9 @@ import java.util.logging.Logger;
 public class Koneksi {
     
     private Connection con;
-    private String url = "jdbc:mysql://localhost:3306/db_tubes_pbo";
-    private String username = "root";
-    private String password = "";
+    private final String url = "jdbc:mysql://localhost:3306/db_tubes_pbo";
+    private final String username = "root";
+    private final String password = "";
     
     public void connect() {
         try{

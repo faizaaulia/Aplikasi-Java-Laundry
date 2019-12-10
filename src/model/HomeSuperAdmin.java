@@ -22,9 +22,8 @@ public class HomeSuperAdmin {
     
     public ArrayList<Admin> loadDataAdmin() {
         con = conn.getKoneksi();
-        ResultSet rs = null;
+        ResultSet rs;
         try {
-            ArrayList<Admin> dafAdmin = new ArrayList();
             String query = "SELECT * FROM tb_admin ORDER BY id_admin DESC";
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
