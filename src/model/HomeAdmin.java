@@ -14,7 +14,6 @@ public class HomeAdmin {
     
     private Connection con;
     Koneksi conn;
-    ArrayList<Transaksi> dafTransaksi = new ArrayList();
     
     public HomeAdmin() {
         conn = new Koneksi();
@@ -51,10 +50,11 @@ public class HomeAdmin {
     }
     
     public ArrayList<Transaksi> loadDataTransaksi() {
+        ArrayList<Transaksi> dafTransaksi = new ArrayList();
         con = conn.getKoneksi();
         ResultSet rs;
         try {
-            String query = "SELECT * FROM tb_Transaksi ORDER BY no_transaksi DESC";
+            String query = "SELECT * FROM tb_transaksi ORDER BY no_transaksi DESC";
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
             while (rs.next()) {
@@ -78,6 +78,32 @@ public class HomeAdmin {
             Logger.getLogger(HomeSuperAdmin.class.getName()).
                     log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    
+    public ResultSet getTransaksi(String no) {
+        con = conn.getKoneksi();
+        ResultSet rs = null;
+        try {
+            String query = "SELECT * FROM tb_transaksi WHERE no_transaksi = '"+no+"'";
+            Statement s = con.createStatement();
+            rs = s.executeQuery(query);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            return rs;
+        }
+    }
+    
+    public void updateTransaksi(String no) {
+        try {
+            String query = "UPDATE tb_transaksi SET status = 'Lunas' "
+                    + "WHERE no_transaksi = '"+no+"'";
+            System.out.println(query);
+            Statement s = con.createStatement();
+            s.execute(query);
+        } catch(SQLException se){
+            System.out.println(se);
         }
     }
 }

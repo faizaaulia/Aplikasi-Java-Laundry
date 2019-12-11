@@ -11,16 +11,20 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Admin;
 import model.HomeSuperAdmin;
+import model.Transaksi;
 import view.DataAdminView;
 import view.HomeSuperAdminView;
+import view.SuperAdminDataTransaksi;
 
 /** @author faizaaulia */
 
 public class HomeSuperAdminController extends MouseAdapter implements ActionListener {
     HomeSuperAdminView superView;
     HomeSuperAdmin model;
-    DataAdminView dataAdminView;
+    DataAdminView dataAdminView = new DataAdminView();;
+    SuperAdminDataTransaksi transaksiView = new SuperAdminDataTransaksi();
     ArrayList<Admin> dafAdmin = new ArrayList();
+    ArrayList<Transaksi> dafTransaksi = new ArrayList();
     
     public HomeSuperAdminController(String nama) {
         superView = new HomeSuperAdminView();
@@ -31,10 +35,17 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
     }
     
     public void HomeDataAdmin() {
-        dataAdminView = new DataAdminView();
+        //dataAdminView = new DataAdminView();
         model = new HomeSuperAdmin();
         dataAdminView.addActionListener(this);
         dataAdminView.setVisible(true);
+    }
+    
+    public void DataTransaksi() {
+        //transaksiView = new SuperAdminDataTransaksi();
+        model = new HomeSuperAdmin();
+        transaksiView.addActionListenet(this);
+        transaksiView.setVisible(true);
     }
     
     public void showDataAdmin() {
@@ -64,6 +75,36 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
         }
         dataAdminView.getTableAdmin().setModel(dtm);
     }
+    
+    public void showDataTransaksi() {
+        dafTransaksi = model.loadDataTransaksi();
+        String kolom[] = {"noTransaksi", "Nama", "Alamat", "No Telp", 
+            "Jenis Kelamin", "Layanan", "Status", "Tanggal", "Berat", "Total"};
+        DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+              }
+        };
+        for (int i = 0; i < dafTransaksi.size(); i++) {
+            String no = Integer.toString((i+1));
+            String noTransaksi = dafTransaksi.get(i).getNoTransaksi();
+            String nama = dafTransaksi.get(i).getNama();
+            String alamat = dafTransaksi.get(i).getAlamat();
+            String noTelp = dafTransaksi.get(i).getNoTelp();
+            String JenisKelamin = dafTransaksi.get(i).getJenisKelamin();
+            String Layanan = dafTransaksi.get(i).getLayanan();
+            String Status = dafTransaksi.get(i).getStatus();
+            String Tanggal = dafTransaksi.get(i).getTanggal();
+            String Berat = Double.toString(dafTransaksi.get(i).getBerat());
+            String Total = Double.toString(dafTransaksi.get(i).getTotal());
+            
+            String data[] = {noTransaksi,nama,alamat,noTelp,JenisKelamin,
+                Layanan,Status,Tanggal,Berat,Total};
+            dtm.addRow(data);
+        }
+        transaksiView.getTableTransaksi().setModel(dtm);
+    }
 
     public void resetForm() {
         dataAdminView.getBgJK().clearSelection();
@@ -84,9 +125,14 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
             this.HomeDataAdmin();
             this.showDataAdmin();
         } else if (source.equals(superView.getBtnDataTransaksi())) {
-            System.out.println("tampil data transaksi");
+            superView.dispose();
+            this.DataTransaksi();
+            this.showDataTransaksi();
         } else if (source.equals(dataAdminView.getBtnBack())) {
             dataAdminView.dispose();
+            superView.setVisible(true);
+        } else if(source.equals(transaksiView.getBtnBack())) {
+            transaksiView.dispose();
             superView.setVisible(true);
         } else if (source.equals(dataAdminView.getBtnSimpan())) {
             String username = dataAdminView.getTfUsername();

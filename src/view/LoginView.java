@@ -3,6 +3,7 @@ package view;
 import controller.LoginController;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
+import javax.swing.UIManager;
 
 /**
  *
@@ -145,6 +146,16 @@ public class LoginView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setFeel() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException 
+                | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SuperAdminDataTransaksi.class.getName())
+                    .log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+    
     private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfUsernameActionPerformed

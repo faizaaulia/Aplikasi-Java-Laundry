@@ -8,15 +8,20 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.HomeAdmin;
 import model.Transaksi;
 import view.HomeAdminView;
+import view.UpdateStatusTransaksiView;
 
 /**
  *
@@ -25,14 +30,20 @@ import view.HomeAdminView;
 public class HomeAdminController extends MouseAdapter implements ActionListener {
     HomeAdminView view;
     HomeAdmin model;
+    UpdateStatusTransaksiView transaksiView;
     Transaksi b;
+    private String no;
     
     public HomeAdminController(String nama) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYY");
+        Date date = new Date();
+        String tgl = dateFormat.format(date);
         view = new HomeAdminView();
         model = new HomeAdmin();
         view.addActionListener(this);
         view.setVisible(true);
         view.setLabelHi(nama);
+        view.setLabelTanggal(tgl);
         showDataTransaksi();
     }
 
@@ -87,7 +98,8 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
     
     public void showDataTransaksi() {
         ArrayList<Transaksi> dafTransaksi = model.loadDataTransaksi();
-        String kolom[] = {"noTransaksi", "Nama", "Alamat", "No Telp", "Jenis Kelamin", "Layanan", "Status", "Tanggal", "Berat", "Total"};
+        String kolom[] = {"noTransaksi", "Nama", "Alamat", "No Telp", 
+            "Jenis Kelamin", "Layanan", "Status", "Tanggal", "Berat", "Total"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex) {
@@ -107,10 +119,41 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
             String Berat = Double.toString(dafTransaksi.get(i).getBerat());
             String Total = Double.toString(dafTransaksi.get(i).getTotal());
             
-            String data[] = {noTransaksi,nama,alamat,noTelp,JenisKelamin,Layanan,Status,Tanggal,Berat,Total};
+            String data[] = {noTransaksi,nama,alamat,noTelp,JenisKelamin,
+                Layanan,Status,Tanggal,Berat,Total};
             dtm.addRow(data);
         }
         view.getTableTransaksi().setModel(dtm);
+    }
+    
+    public void loadTransaksi(String no) {
+        try {
+            String find = view.getTfCari();
+            ResultSet rs = model.getTransaksi(find);
+            if (rs.next()) {
+                transaksiView = new UpdateStatusTransaksiView();
+                transaksiView.setVisible(true);
+                transaksiView.setLabelNamanya(rs.getString(2));
+                transaksiView.setLabelAlamatnya(rs.getString(3));
+                transaksiView.setLabelTelpnya(rs.getString(4));
+                transaksiView.setLabelKelaminnya(rs.getString(5));
+                transaksiView.setLabelLayanannya(rs.getString(6));
+                transaksiView.setLabelStatusnya(rs.getString(7));
+                transaksiView.setLabelTanggalnya(rs.getString(8));
+                transaksiView.setLabelBeratnya(rs.getString(9));
+                transaksiView.setLabelTotalnya(rs.getString(10));
+                if (rs.getString(7).equals("Belum Lunas")) {
+                    transaksiView.getTfUpdate().setVisible(true);
+                    transaksiView.getButtonUpdate().setVisible(true);
+                    transaksiView.addActionListener(this);
+                    no = rs.getString(1);
+                }
+            } else
+                JOptionPane.showMessageDialog(view, "No. Transaksi tidak ada!",
+                    "Error", JOptionPane.WARNING_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -120,14 +163,24 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
         if (source.equals(view.getBtnHitung())) {
             cek(b);
         } else if (source.equals(view.getBtnTambah())) {
-            if (cek(b) != null)
+            if (cek(b) != null) {
                 model.insertTransaksi(cek(b));
-            JOptionPane.showMessageDialog(view, "Berhasil menambahkan transaksi baru", 
-                "Sukses", JOptionPane.INFORMATION_MESSAGE);
-            showDataTransaksi();
+                JOptionPane.showMessageDialog(view, "Berhasil menambahkan transaksi baru", 
+                    "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                showDataTransaksi();
+            }
         } else if (source.equals(view.getBtnLogout())) {
             view.dispose();
             new LoginController();
+        } else if (source.equals(view.getBtnCari())) {
+            loadTransaksi(no);
+        } else if (source.equals(transaksiView.getButtonUpdate())) {
+            model.updateTransaksi(no);
+            JOptionPane.showMessageDialog(view, "Berhasil mengubah status", 
+                    "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            transaksiView.dispose();
+            loadTransaksi(no);
+            showDataTransaksi();
         }
     }
 }

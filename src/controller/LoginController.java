@@ -19,6 +19,7 @@ public class LoginController extends MouseAdapter implements ActionListener {
         model = new Login();
         view.addActionListener(this);
         view.setVisible(true);
+        view.setFeel();
     }
 
     @Override
@@ -37,7 +38,7 @@ public class LoginController extends MouseAdapter implements ActionListener {
                         String role = rs.getString(8);
                         if (role.equals("1"))
                             new HomeSuperAdminController(nama);
-                        else
+                        else 
                             new HomeAdminController(nama);
                     } else {
                         JOptionPane.showMessageDialog(view, "User tidak ditemukan", 
@@ -48,6 +49,8 @@ public class LoginController extends MouseAdapter implements ActionListener {
                     JOptionPane.showMessageDialog(view, "Username atau Password kosong!", 
                             "Error", JOptionPane.WARNING_MESSAGE);
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(view, "Tidak terhubung ke database", 
+                            "Error", JOptionPane.WARNING_MESSAGE);
                 System.out.println(e.getMessage());
             }
         }

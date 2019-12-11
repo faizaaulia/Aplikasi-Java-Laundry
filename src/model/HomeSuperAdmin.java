@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 public class HomeSuperAdmin {
     static ArrayList<Admin> dafAdmin = new ArrayList();
+    static ArrayList<Transaksi> dafTransaksi = new ArrayList();
     private Connection con;
     Koneksi conn;
     
@@ -72,6 +73,37 @@ public class HomeSuperAdmin {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             return rs;
+        }
+    }
+    
+    public ArrayList<Transaksi> loadDataTransaksi() {
+        con = conn.getKoneksi();
+        ResultSet rs;
+        try {
+            String query = "SELECT * FROM tb_transaksi ORDER BY no_transaksi DESC";
+            Statement s = con.createStatement();
+            rs = s.executeQuery(query);
+            while (rs.next()) {
+                String noTransaksi = rs.getString(1);
+                String nama = rs.getString(2);
+                String alamat = rs.getString(3);
+                String noTelp = rs.getString(4);
+                String jenisKelamin = rs.getString(5);
+                String layanan = rs.getString(6);
+                String status = rs.getString(7);
+                String tanggal = rs.getString(8);
+                Double berat = rs.getDouble(9);
+                Double total = rs.getDouble(10);
+                Transaksi a = new Transaksi(noTransaksi,nama,alamat,noTelp,
+                        jenisKelamin,layanan,status,tanggal,berat,total);
+                dafTransaksi.add(a);
+            }
+            System.out.println("DATA LOADED");
+            return dafTransaksi;
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeSuperAdmin.class.getName()).
+                    log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 }
