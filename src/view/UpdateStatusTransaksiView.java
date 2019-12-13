@@ -8,7 +8,6 @@ package view;
 import controller.HomeAdminController;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -22,7 +21,6 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
     public UpdateStatusTransaksiView() {
         initComponents();
         buttonUpdate.setVisible(false);
-        tfUpdate.setVisible(false);
     }
 
     /**
@@ -36,25 +34,27 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         labelNama = new javax.swing.JLabel();
-        labelNamanya = new javax.swing.JLabel();
         labelAlamat = new javax.swing.JLabel();
-        labelAlamatnya = new javax.swing.JLabel();
         labeTelp = new javax.swing.JLabel();
-        labelTelpnya = new javax.swing.JLabel();
         labelStatus = new javax.swing.JLabel();
-        labelLayanannya = new javax.swing.JLabel();
         labelLayanan = new javax.swing.JLabel();
-        labelKelaminnya = new javax.swing.JLabel();
         labelKelamin = new javax.swing.JLabel();
-        labelStatusnya = new javax.swing.JLabel();
         labelTgl = new javax.swing.JLabel();
         labelBerat = new javax.swing.JLabel();
         labelTotal = new javax.swing.JLabel();
-        labelTanggalnya = new javax.swing.JLabel();
-        labelBeratnya = new javax.swing.JLabel();
-        labelTotalnya = new javax.swing.JLabel();
+        labelNamanya = new javax.swing.JTextField();
+        labelTelpnya = new javax.swing.JTextField();
+        labelAlamatnya = new javax.swing.JTextField();
+        labelKelaminnya = new javax.swing.JTextField();
+        labelLayanannya = new javax.swing.JTextField();
+        labelStatusnya = new javax.swing.JTextField();
+        labelTanggalnya = new javax.swing.JTextField();
+        labelBeratnya = new javax.swing.JTextField();
+        labelTotalnya = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         buttonUpdate = new javax.swing.JButton();
-        tfUpdate = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,159 +64,156 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
         labelNama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelNama.setText("Nama");
 
-        labelNamanya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labelNamanya.setText("namanya");
-
         labelAlamat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelAlamat.setText("Alamat");
-
-        labelAlamatnya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labelAlamatnya.setText("alamatnya");
 
         labeTelp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labeTelp.setText("No. Telp");
 
-        labelTelpnya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labelTelpnya.setText("telpnya");
-
         labelStatus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelStatus.setText("Status");
-
-        labelLayanannya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labelLayanannya.setText("layanannya");
 
         labelLayanan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelLayanan.setText("Layanan");
 
-        labelKelaminnya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labelKelaminnya.setText("Kelaminnya");
-
+        labelKelamin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelKelamin.setText("Jenis Kelamin");
 
-        labelStatusnya.setText("Statusnya");
-
+        labelTgl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelTgl.setText("Tgl Transaksi");
 
+        labelBerat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelBerat.setText("Berat");
 
+        labelTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelTotal.setText("Total");
 
-        labelTanggalnya.setText("Tanggalnya");
+        labelNamanya.setEditable(false);
 
-        labelBeratnya.setText("Beratnya");
+        labelTelpnya.setEditable(false);
 
-        labelTotalnya.setText("Totalnya");
+        labelAlamatnya.setEditable(false);
 
-        buttonUpdate.setText("Update");
+        labelKelaminnya.setEditable(false);
+
+        labelLayanannya.setEditable(false);
+
+        labelStatusnya.setEditable(false);
+
+        labelTanggalnya.setEditable(false);
+
+        labelBeratnya.setEditable(false);
+
+        labelTotalnya.setEditable(false);
+
+        buttonUpdate.setText("UPDATE");
         buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonUpdateActionPerformed(evt);
             }
         });
 
-        tfUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUpdateActionPerformed(evt);
-            }
-        });
+        btnBack.setText("BACK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
+            .addComponent(jSeparator2)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(labelLayanan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                                 .addComponent(labelNama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelAlamat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(labeTelp)
-                            .addComponent(labelKelamin))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(labelLayanannya))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelAlamatnya)
-                                    .addComponent(labelKelaminnya)
-                                    .addComponent(labelTelpnya)
-                                    .addComponent(labelNamanya, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTgl)
-                            .addComponent(labelStatus)
-                            .addComponent(labelBerat)
-                            .addComponent(labelTotal))
+                                .addComponent(labelAlamat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                            .addComponent(labelKelamin)
+                            .addComponent(labeTelp))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTotalnya)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonUpdate))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelTanggalnya)
-                                    .addComponent(labelStatusnya))
-                                .addGap(0, 203, Short.MAX_VALUE))
+                                    .addComponent(labelKelaminnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelNamanya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelAlamatnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelBerat)
+                                            .addComponent(labelTotal)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                        .addComponent(labelTgl))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelBeratnya)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(51, 51, 51))
+                                .addComponent(labelTelpnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(labelStatus)))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelStatusnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelLayanannya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(labelBeratnya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelTotalnya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelTanggalnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonUpdate)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNama)
-                    .addComponent(labelNamanya))
+                    .addComponent(labelLayanan)
+                    .addComponent(labelNamanya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelLayanannya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labeTelp)
-                    .addComponent(labelTelpnya))
+                    .addComponent(labelStatus)
+                    .addComponent(labelTelpnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelStatusnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAlamat)
-                    .addComponent(labelAlamatnya))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelKelaminnya)
-                    .addComponent(labelKelamin))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelLayanan)
-                    .addComponent(labelLayanannya))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelStatus)
-                    .addComponent(labelStatusnya))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTgl)
-                    .addComponent(labelTanggalnya))
+                    .addComponent(labelAlamatnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTanggalnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelKelamin)
                     .addComponent(labelBerat)
-                    .addComponent(labelBeratnya)
-                    .addComponent(tfUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelKelaminnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelBeratnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTotal)
-                    .addComponent(labelTotalnya)
-                    .addComponent(buttonUpdate))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(labelTotalnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonUpdate)
+                    .addComponent(btnBack))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -227,158 +224,82 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
-    private void tfUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfUpdateActionPerformed
-
     public JButton getButtonUpdate() {
         return buttonUpdate;
+    }
+    
+    public JButton getBtnBack() {
+        return btnBack;
     }
 
     public void setButtonUpdate(JButton buttonUpdate) {
         this.buttonUpdate = buttonUpdate;
     }
 
-    public JLabel getLabelAlamatnya() {
-        return labelAlamatnya;
-    }
-
     public void setLabelAlamatnya(String labelAlamatnya) {
         this.labelAlamatnya.setText(labelAlamatnya); 
     }
 
-    public JLabel getLabelBeratnya() {
-        return labelBeratnya;
-    }
-
     public void setLabelBeratnya(String labelBeratnya) {
-        this.labelBeratnya.setText(labelBeratnya);
-    }
-
-    public JLabel getLabelKelaminnya() {
-        return labelKelaminnya;
+        this.labelBeratnya.setText(labelBeratnya + " Kg");
     }
 
     public void setLabelKelaminnya(String labelKelaminnya) {
         this.labelKelaminnya.setText(labelKelaminnya);
     }
 
-    public JLabel getLabelLayanannya() {
-        return labelLayanannya;
-    }
-
     public void setLabelLayanannya(String labelLayanannya) {
         this.labelLayanannya.setText(labelLayanannya);
-    }
-
-    public JLabel getLabelNamanya() {
-        return labelNamanya;
     }
 
     public void setLabelNamanya(String labelNamanya) {
         this.labelNamanya.setText(labelNamanya);
     }
 
-    public JLabel getLabelStatusnya() {
-        return labelStatusnya;
-    }
-
     public void setLabelStatusnya(String labelStatusnya) {
         this.labelStatusnya.setText(labelStatusnya);
     }
-
-    public JLabel getLabelTanggalnya() {
-        return labelTanggalnya;
-    }
-
+    
     public void setLabelTanggalnya(String labelTanggalnya) {
         this.labelTanggalnya.setText(labelTanggalnya);
-    }
-
-    public JLabel getLabelTelpnya() {
-        return labelTelpnya;
     }
 
     public void setLabelTelpnya(String labelTelpnya) {
         this.labelTelpnya.setText(labelTelpnya);
     }
 
-    public JLabel getLabelTotalnya() {
-        return labelTotalnya;
-    }
-
     public void setLabelTotalnya(String labelTotalnya) {
-        this.labelTotalnya.setText(labelTotalnya);
-    }
-
-    public JTextField getTfUpdate() {
-        return tfUpdate;
-    }
-
-    public void setTfUpdate(JTextField tfUpdate) {
-        this.tfUpdate = tfUpdate;
+        this.labelTotalnya.setText("Rp" + labelTotalnya);
     }
 
     public void addActionListener(HomeAdminController aThis) {
         buttonUpdate.addActionListener(aThis);
+        btnBack.addActionListener(aThis);
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateStatusTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateStatusTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateStatusTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateStatusTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateStatusTransaksiView().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton buttonUpdate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labeTelp;
     private javax.swing.JLabel labelAlamat;
-    private javax.swing.JLabel labelAlamatnya;
+    private javax.swing.JTextField labelAlamatnya;
     private javax.swing.JLabel labelBerat;
-    private javax.swing.JLabel labelBeratnya;
+    private javax.swing.JTextField labelBeratnya;
     private javax.swing.JLabel labelKelamin;
-    private javax.swing.JLabel labelKelaminnya;
+    private javax.swing.JTextField labelKelaminnya;
     private javax.swing.JLabel labelLayanan;
-    private javax.swing.JLabel labelLayanannya;
+    private javax.swing.JTextField labelLayanannya;
     private javax.swing.JLabel labelNama;
-    private javax.swing.JLabel labelNamanya;
+    private javax.swing.JTextField labelNamanya;
     private javax.swing.JLabel labelStatus;
-    private javax.swing.JLabel labelStatusnya;
-    private javax.swing.JLabel labelTanggalnya;
-    private javax.swing.JLabel labelTelpnya;
+    private javax.swing.JTextField labelStatusnya;
+    private javax.swing.JTextField labelTanggalnya;
+    private javax.swing.JTextField labelTelpnya;
     private javax.swing.JLabel labelTgl;
     private javax.swing.JLabel labelTotal;
-    private javax.swing.JLabel labelTotalnya;
-    private javax.swing.JTextField tfUpdate;
+    private javax.swing.JTextField labelTotalnya;
     // End of variables declaration//GEN-END:variables
 }

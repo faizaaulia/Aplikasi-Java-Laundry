@@ -99,7 +99,7 @@ public class HomeAdmin {
         try {
             String query = "UPDATE tb_transaksi SET status = 'Lunas' "
                     + "WHERE no_transaksi = '"+no+"'";
-            System.out.println(query);
+            //System.out.println(query);
             Statement s = con.createStatement();
             s.execute(query);
         } catch(SQLException se){

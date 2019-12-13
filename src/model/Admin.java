@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /** @author faizaaulia */
 
 public class Admin extends Person {

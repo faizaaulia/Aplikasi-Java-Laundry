@@ -53,18 +53,10 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
         String noTelp = view.getTfNoHp();
         boolean bgNotNull = view.getRadioLk().isSelected() || view.getRadioPr().isSelected();
         String berat = view.getTfBerat();
-        double x = Double.parseDouble(berat);
         String layanan = view.getCbLayanan().getSelectedItem().toString();
         String pembayaran = view.getCbBayar().getSelectedItem().toString();
         double total=0;
         int inLayanan = view.getCbLayanan().getSelectedIndex();
-        switch (inLayanan){
-            case 0 : total = x*6000; break;
-            case 1 : total = x*8000; break;
-            case 2 : total = x*10000; break;
-            case 3 : total = x*12000; break;
-        }
-        view.setTfTotal(Double.toString(total));
         if (nama.equals("") || alamat.equals("") || noTelp.equals("") || berat.equals("") || !bgNotNull) {
             JOptionPane.showMessageDialog(view, "Lengkapi data", "Error", JOptionPane.WARNING_MESSAGE);
             return null;
@@ -86,6 +78,14 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
                 return null;
             }
             else {
+                double x = Double.parseDouble(berat);
+                switch (inLayanan){
+                    case 0 : total = x*6000; break;
+                    case 1 : total = x*8000; break;
+                    case 2 : total = x*10000; break;
+                    case 3 : total = x*12000; break;
+                }
+                view.setTfTotal(Double.toString(total));
                 String jk = view.getBgJK().getSelection().getActionCommand();
                 String noTransaksi = "TR00" + (model.getLastID()+1);
                 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -98,7 +98,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
     
     public void showDataTransaksi() {
         ArrayList<Transaksi> dafTransaksi = model.loadDataTransaksi();
-        String kolom[] = {"noTransaksi", "Nama", "Alamat", "No Telp", 
+        String kolom[] = {"No Transaksi", "Nama", "Alamat", "No Telp", 
             "Jenis Kelamin", "Layanan", "Status", "Tanggal", "Berat", "Total"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
             @Override
@@ -116,7 +116,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
             String Layanan = dafTransaksi.get(i).getLayanan();
             String Status = dafTransaksi.get(i).getStatus();
             String Tanggal = dafTransaksi.get(i).getTanggal();
-            String Berat = Double.toString(dafTransaksi.get(i).getBerat());
+            String Berat = Double.toString(dafTransaksi.get(i).getBerat()) + " Kg";
             String Total = Double.toString(dafTransaksi.get(i).getTotal());
             
             String data[] = {noTransaksi,nama,alamat,noTelp,JenisKelamin,
@@ -126,12 +126,13 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
         view.getTableTransaksi().setModel(dtm);
     }
     
-    public void loadTransaksi(String no) {
+    public void loadTransaksi() {
+        String find = view.getTfCari();
         try {
-            String find = view.getTfCari();
             ResultSet rs = model.getTransaksi(find);
             if (rs.next()) {
                 transaksiView = new UpdateStatusTransaksiView();
+                transaksiView.addActionListener(this);
                 transaksiView.setVisible(true);
                 transaksiView.setLabelNamanya(rs.getString(2));
                 transaksiView.setLabelAlamatnya(rs.getString(3));
@@ -143,10 +144,8 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
                 transaksiView.setLabelBeratnya(rs.getString(9));
                 transaksiView.setLabelTotalnya(rs.getString(10));
                 if (rs.getString(7).equals("Belum Lunas")) {
-                    transaksiView.getTfUpdate().setVisible(true);
                     transaksiView.getButtonUpdate().setVisible(true);
-                    transaksiView.addActionListener(this);
-                    no = rs.getString(1);
+                    no = find;
                 }
             } else
                 JOptionPane.showMessageDialog(view, "No. Transaksi tidak ada!",
@@ -173,14 +172,16 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
             view.dispose();
             new LoginController();
         } else if (source.equals(view.getBtnCari())) {
-            loadTransaksi(no);
+            loadTransaksi();
         } else if (source.equals(transaksiView.getButtonUpdate())) {
             model.updateTransaksi(no);
             JOptionPane.showMessageDialog(view, "Berhasil mengubah status", 
                     "Sukses", JOptionPane.INFORMATION_MESSAGE);
             transaksiView.dispose();
-            loadTransaksi(no);
+            loadTransaksi();
             showDataTransaksi();
+        } else if (source.equals(transaksiView.getBtnBack())) {
+            transaksiView.dispose();
         }
     }
 }
