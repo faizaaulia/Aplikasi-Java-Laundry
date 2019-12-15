@@ -35,53 +35,56 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="labelNama" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelAlamat" alignment="0" pref="47" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="labelNama" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labelAlamat" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="labelKelamin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labeTelp" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="tfJKnya" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="tfNamanya" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="tfAlamatnya" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="tfNoTelpnya" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="labelKelamin" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labeTelp" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="labelNama1" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfNoTransaksi" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelKelaminnya" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="labelNamanya" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="labelAlamatnya" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="labelLayanan" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="labelBerat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelTotal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelStatus" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelLayanan" min="-2" pref="47" max="-2" attributes="0"/>
-                                          <Component id="labelBerat" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelTotal" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="40" max="32767" attributes="0"/>
-                                      <Component id="labelTgl" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace type="separate" pref="40" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labelTelpnya" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="labelStatus" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="labelTgl" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelStatusnya" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="labelLayanannya" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="tfStatusnya" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="tfLayanannya" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="labelBeratnya" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="tfBeratnya" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="labelTotalnya" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="labelTanggalnya" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="tfTotalnya" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="tfTanggalnya" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -104,45 +107,65 @@
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelNama" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelLayanan" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelNamanya" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelLayanannya" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfLayanannya" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNama1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfNoTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labeTelp" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelTelpnya" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelStatusnya" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfStatusnya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelTgl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfTanggalnya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelBerat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfBeratnya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfTotalnya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jSeparator2" min="-2" pref="5" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelNama" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfNamanya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labeTelp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfNoTelpnya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfAlamatnya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelKelamin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfJKnya" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelTgl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelAlamatnya" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelTanggalnya" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelKelamin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelBerat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelKelaminnya" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelBeratnya" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelTotalnya" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="9" max="32767" attributes="0"/>
-              <Component id="jSeparator2" min="-2" pref="5" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -228,47 +251,47 @@
         <Property name="text" type="java.lang.String" value="Total"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelNamanya">
+    <Component class="javax.swing.JTextField" name="tfNamanya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelTelpnya">
+    <Component class="javax.swing.JTextField" name="tfNoTelpnya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelAlamatnya">
+    <Component class="javax.swing.JTextField" name="tfAlamatnya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelKelaminnya">
+    <Component class="javax.swing.JTextField" name="tfJKnya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelLayanannya">
+    <Component class="javax.swing.JTextField" name="tfLayanannya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelStatusnya">
+    <Component class="javax.swing.JTextField" name="tfStatusnya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelTanggalnya">
+    <Component class="javax.swing.JTextField" name="tfTanggalnya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelBeratnya">
+    <Component class="javax.swing.JTextField" name="tfBeratnya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="labelTotalnya">
+    <Component class="javax.swing.JTextField" name="tfTotalnya">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -288,6 +311,19 @@
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
         <Property name="text" type="java.lang.String" value="BACK"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNama1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="No. Transaksi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfNoTransaksi">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
   </SubComponents>

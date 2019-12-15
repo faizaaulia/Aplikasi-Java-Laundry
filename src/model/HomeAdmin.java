@@ -39,27 +39,33 @@ public class HomeAdmin {
     public void insertTransaksi(Transaksi a){
         int no = getLastID()+1;
         try {
-            String query = "INSERT INTO tb_transaksi VALUES ('"+no+"','"+a.getNoTransaksi()+"',"
-                    + "'"+a.getNama()+"','"+a.getAlamat()+"','"+a.getNoTelp()+"',"
-                    + "'"+a.getJenisKelamin()+"','"+a.getLayanan()+"','"+a.getStatus()+"',"
-                    + "'"+a.getTanggal()+"','"+a.getBerat()+"','"+a.getTotal()+"')";
+            String query = "INSERT INTO tb_transaksi VALUES ('"+no+"',"
+                    + "'"+a.getNoTransaksi()+"','"+a.getIdCust()+"','"+a.getLayanan()+"'"
+                    + ",'"+a.getStatus()+"','"+a.getTanggal()+"','"+a.getBerat()+"','"+a.getTotal()+"')";
             Statement s = con.createStatement();
+            System.out.println(query);
             s.execute(query);
         } catch(SQLException se){
             System.out.println(se);
         }
     }
     
-    public ArrayList<Transaksi> loadDataTransaksi() {
+    public ArrayList loadDataTransaksi() {
+        ArrayList result = new ArrayList();
         ArrayList<Transaksi> dafTransaksi = new ArrayList();
+        ArrayList<Person> dafPelanggan = new ArrayList();
         con = conn.getKoneksi();
         ResultSet rs;
         try {
-            String query = "SELECT * FROM tb_transaksi ORDER BY no DESC";
+            String query = "SELECT no_transaksi,id_cust,nama_cust,alamat_cust,no_telp_cust,"
+                    + "jenisKel_cust,layanan,status,tanggal_transaksi,berat,"
+                    + "total FROM tb_customer JOIN tb_transaksi USING (id_cust) "
+                    + "ORDER BY tb_transaksi.no desc";
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
             while (rs.next()) {
-                String noTransaksi = rs.getString(2);
+                String noTransaksi = rs.getString(1);
+                String idCust = rs.getString(2);
                 String nama = rs.getString(3);
                 String alamat = rs.getString(4);
                 String noTelp = rs.getString(5);
@@ -69,12 +75,15 @@ public class HomeAdmin {
                 String tanggal = rs.getString(9);
                 Double berat = rs.getDouble(10);
                 Double total = rs.getDouble(11);
-                Transaksi a = new Transaksi(noTransaksi,nama,alamat,noTelp,
-                        jenisKelamin,layanan,status,tanggal,berat,total);
+                Transaksi a = new Transaksi(noTransaksi,idCust,layanan,status,tanggal,berat,total);
+                Person p = new Person(nama,alamat,noTelp,jenisKelamin);
+                dafPelanggan.add(p);
                 dafTransaksi.add(a);
             }
+            result.add(dafTransaksi);
+            result.add(dafPelanggan);
             System.out.println("DATA LOADED");
-            return dafTransaksi;
+            return result;
         } catch (SQLException ex) {
             Logger.getLogger(HomeSuperAdmin.class.getName()).
                     log(Level.SEVERE, null, ex);
@@ -120,8 +129,8 @@ public class HomeAdmin {
         }
     }
     
-    public ArrayList<Person> loadDataPelanggan(String find,ArrayList<String> idCust) {
-        ArrayList<Person> dafPelanggan = new ArrayList();
+    public ArrayList<Customer> loadDataPelanggan(String find) {
+        ArrayList<Customer> dafPelanggan = new ArrayList();
         con = conn.getKoneksi();
         ResultSet rs;
         try {
@@ -129,13 +138,13 @@ public class HomeAdmin {
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
             while (rs.next()) {
-                idCust.add(rs.getString(2));
+                String id = rs.getString(2);
                 String nama = rs.getString(3);
                 String alamat = rs.getString(4);
                 String noTelp = rs.getString(5);
                 String jenisKelamin = rs.getString(6);
-                Person p = new Person(nama,alamat,noTelp,jenisKelamin);
-                dafPelanggan.add(p);
+                Customer c = new Customer(nama,alamat,noTelp,jenisKelamin,id);
+                dafPelanggan.add(c);
             }
             System.out.println("DATA LOADED");
             return dafPelanggan;
@@ -162,14 +171,14 @@ public class HomeAdmin {
         return 0;
     }
     
-    public void insertCust(Person p) {
+    public void insertCust(Customer c) {
         int no = getLastIdCust()+1;
-        String id = "CS00" + no;
         try {
-            String query = "INSERT INTO tb_customer VALUES ('"+no+"','"+id+"',"
-                    + "'"+p.getNama()+"','"+p.getAlamat()+"','"+p.getNoTelp()+"',"
-                    + "'"+p.getJenisKelamin()+"')";
+            String query = "INSERT INTO tb_customer VALUES ('"+no+"','"+c.getIdCust()+"',"
+                    + "'"+c.getNama()+"','"+c.getAlamat()+"','"+c.getNoTelp()+"',"
+                    + "'"+c.getJenisKelamin()+"')";
             Statement s = con.createStatement();
+            System.out.println(query);
             s.execute(query);
         } catch(SQLException se){
             System.out.println(se);

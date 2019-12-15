@@ -76,15 +76,22 @@ public class HomeSuperAdmin {
         }
     }
     
-    public ArrayList<Transaksi> loadDataTransaksi() {
+    public ArrayList loadDataTransaksi() {
+        ArrayList result = new ArrayList();
+        ArrayList<Transaksi> dafTransaksi = new ArrayList();
+        ArrayList<Person> dafPelanggan = new ArrayList();
         con = conn.getKoneksi();
         ResultSet rs;
         try {
-            String query = "SELECT * FROM tb_transaksi ORDER BY no DESC";
+            String query = "SELECT no_transaksi,id_cust,nama_cust,alamat_cust,no_telp_cust,"
+                    + "jenisKel_cust,layanan,status,tanggal_transaksi,berat,"
+                    + "total FROM tb_customer JOIN tb_transaksi USING (id_cust) "
+                    + "ORDER BY tb_transaksi.no desc";
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
             while (rs.next()) {
-                String noTransaksi = rs.getString(2);
+                String noTransaksi = rs.getString(1);
+                String idCust = rs.getString(2);
                 String nama = rs.getString(3);
                 String alamat = rs.getString(4);
                 String noTelp = rs.getString(5);
@@ -94,12 +101,15 @@ public class HomeSuperAdmin {
                 String tanggal = rs.getString(9);
                 Double berat = rs.getDouble(10);
                 Double total = rs.getDouble(11);
-                Transaksi a = new Transaksi(noTransaksi,nama,alamat,noTelp,
-                        jenisKelamin,layanan,status,tanggal,berat,total);
+                Transaksi a = new Transaksi(noTransaksi,idCust,layanan,status,tanggal,berat,total);
                 dafTransaksi.add(a);
+                Person p = new Person(nama,alamat,noTelp,jenisKelamin);
+                dafPelanggan.add(p);
             }
+            result.add(dafTransaksi);
+            result.add(dafPelanggan);
             System.out.println("DATA LOADED");
-            return dafTransaksi;
+            return result;
         } catch (SQLException ex) {
             Logger.getLogger(HomeSuperAdmin.class.getName()).
                     log(Level.SEVERE, null, ex);

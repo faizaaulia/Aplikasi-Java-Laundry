@@ -42,19 +42,21 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
         labelTgl = new javax.swing.JLabel();
         labelBerat = new javax.swing.JLabel();
         labelTotal = new javax.swing.JLabel();
-        labelNamanya = new javax.swing.JTextField();
-        labelTelpnya = new javax.swing.JTextField();
-        labelAlamatnya = new javax.swing.JTextField();
-        labelKelaminnya = new javax.swing.JTextField();
-        labelLayanannya = new javax.swing.JTextField();
-        labelStatusnya = new javax.swing.JTextField();
-        labelTanggalnya = new javax.swing.JTextField();
-        labelBeratnya = new javax.swing.JTextField();
-        labelTotalnya = new javax.swing.JTextField();
+        tfNamanya = new javax.swing.JTextField();
+        tfNoTelpnya = new javax.swing.JTextField();
+        tfAlamatnya = new javax.swing.JTextField();
+        tfJKnya = new javax.swing.JTextField();
+        tfLayanannya = new javax.swing.JTextField();
+        tfStatusnya = new javax.swing.JTextField();
+        tfTanggalnya = new javax.swing.JTextField();
+        tfBeratnya = new javax.swing.JTextField();
+        tfTotalnya = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         btnUpdate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        labelNama1 = new javax.swing.JLabel();
+        tfNoTransaksi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -88,23 +90,23 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
         labelTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelTotal.setText("Total");
 
-        labelNamanya.setEditable(false);
+        tfNamanya.setEditable(false);
 
-        labelTelpnya.setEditable(false);
+        tfNoTelpnya.setEditable(false);
 
-        labelAlamatnya.setEditable(false);
+        tfAlamatnya.setEditable(false);
 
-        labelKelaminnya.setEditable(false);
+        tfJKnya.setEditable(false);
 
-        labelLayanannya.setEditable(false);
+        tfLayanannya.setEditable(false);
 
-        labelStatusnya.setEditable(false);
+        tfStatusnya.setEditable(false);
 
-        labelTanggalnya.setEditable(false);
+        tfTanggalnya.setEditable(false);
 
-        labelBeratnya.setEditable(false);
+        tfBeratnya.setEditable(false);
 
-        labelTotalnya.setEditable(false);
+        tfTotalnya.setEditable(false);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +116,11 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
         });
 
         btnBack.setText("BACK");
+
+        labelNama1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        labelNama1.setText("No. Transaksi");
+
+        tfNoTransaksi.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,41 +137,44 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(labelNama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelAlamat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                            .addComponent(labelKelamin)
-                            .addComponent(labeTelp))
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(labelNama, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(labelAlamat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelKelamin)
+                                    .addComponent(labeTelp))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfJKnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfNamanya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfAlamatnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfNoTelpnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelNama1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfNoTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelKelaminnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelNamanya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelAlamatnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelBerat)
-                                            .addComponent(labelTotal)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                        .addComponent(labelTgl))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTelpnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
-                                .addComponent(labelStatus)))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelBerat)
+                                    .addComponent(labelTotal)
+                                    .addComponent(labelStatus))
+                                .addGap(18, 40, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelTgl)
+                                .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelStatusnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelLayanannya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(labelBeratnya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(labelTotalnya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelTanggalnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tfStatusnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfLayanannya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfBeratnya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfTotalnya, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfTanggalnya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,39 +191,52 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNama)
                     .addComponent(labelLayanan)
-                    .addComponent(labelNamanya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelLayanannya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfLayanannya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNama1)
+                    .addComponent(tfNoTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labeTelp)
-                    .addComponent(labelStatus)
-                    .addComponent(labelTelpnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelStatusnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelAlamat)
-                    .addComponent(labelTgl)
-                    .addComponent(labelAlamatnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTanggalnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelKelamin)
-                    .addComponent(labelBerat)
-                    .addComponent(labelKelaminnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelBeratnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTotal)
-                    .addComponent(labelTotalnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnBack))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelStatus)
+                            .addComponent(tfStatusnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTgl)
+                            .addComponent(tfTanggalnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelBerat)
+                            .addComponent(tfBeratnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTotal)
+                            .addComponent(tfTotalnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnUpdate)
+                            .addComponent(btnBack))
+                        .addContainerGap(14, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelNama)
+                            .addComponent(tfNamanya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labeTelp)
+                            .addComponent(tfNoTelpnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelAlamat)
+                            .addComponent(tfAlamatnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelKelamin)
+                            .addComponent(tfJKnya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -235,41 +258,45 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
     public void setButtonUpdate(JButton buttonUpdate) {
         this.btnUpdate = buttonUpdate;
     }
-
-    public void setLabelAlamatnya(String labelAlamatnya) {
-        this.labelAlamatnya.setText(labelAlamatnya); 
+    
+    public void setTfNoTransaksi(String tfTransaksi) {
+        this.tfNoTransaksi.setText(tfTransaksi);
     }
 
-    public void setLabelBeratnya(String labelBeratnya) {
-        this.labelBeratnya.setText(labelBeratnya + " Kg");
+    public void setTfAlamatnya(String tfAlamatnya) {
+        this.tfAlamatnya.setText(tfAlamatnya); 
     }
 
-    public void setLabelKelaminnya(String labelKelaminnya) {
-        this.labelKelaminnya.setText(labelKelaminnya);
+    public void setTfBeratnya(String tfBeratnya) {
+        this.tfBeratnya.setText(tfBeratnya + " Kg");
     }
 
-    public void setLabelLayanannya(String labelLayanannya) {
-        this.labelLayanannya.setText(labelLayanannya);
+    public void setTfJK(String tfJK) {
+        this.tfJKnya.setText(tfJK);
     }
 
-    public void setLabelNamanya(String labelNamanya) {
-        this.labelNamanya.setText(labelNamanya);
+    public void setTfLayanannya(String tfLayanannya) {
+        this.tfLayanannya.setText(tfLayanannya);
     }
 
-    public void setLabelStatusnya(String labelStatusnya) {
-        this.labelStatusnya.setText(labelStatusnya);
+    public void setTfNamanya(String tfNamanya) {
+        this.tfNamanya.setText(tfNamanya);
+    }
+
+    public void setTfStatusnya(String tfStatusnya) {
+        this.tfStatusnya.setText(tfStatusnya);
     }
     
-    public void setLabelTanggalnya(String labelTanggalnya) {
-        this.labelTanggalnya.setText(labelTanggalnya);
+    public void setTfTanggalnya(String tfTanggalnya) {
+        this.tfTanggalnya.setText(tfTanggalnya);
     }
 
-    public void setLabelTelpnya(String labelTelpnya) {
-        this.labelTelpnya.setText(labelTelpnya);
+    public void setTfNoTelpnya(String tfTelpnya) {
+        this.tfNoTelpnya.setText(tfTelpnya);
     }
 
-    public void setLabelTotalnya(String labelTotalnya) {
-        this.labelTotalnya.setText("Rp" + labelTotalnya);
+    public void setTfTotalnya(String tfTotalnya) {
+        this.tfTotalnya.setText("Rp" + tfTotalnya);
     }
 
     public void addActionListener(HomeAdminController aThis) {
@@ -285,21 +312,23 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labeTelp;
     private javax.swing.JLabel labelAlamat;
-    private javax.swing.JTextField labelAlamatnya;
     private javax.swing.JLabel labelBerat;
-    private javax.swing.JTextField labelBeratnya;
     private javax.swing.JLabel labelKelamin;
-    private javax.swing.JTextField labelKelaminnya;
     private javax.swing.JLabel labelLayanan;
-    private javax.swing.JTextField labelLayanannya;
     private javax.swing.JLabel labelNama;
-    private javax.swing.JTextField labelNamanya;
+    private javax.swing.JLabel labelNama1;
     private javax.swing.JLabel labelStatus;
-    private javax.swing.JTextField labelStatusnya;
-    private javax.swing.JTextField labelTanggalnya;
-    private javax.swing.JTextField labelTelpnya;
     private javax.swing.JLabel labelTgl;
     private javax.swing.JLabel labelTotal;
-    private javax.swing.JTextField labelTotalnya;
+    private javax.swing.JTextField tfAlamatnya;
+    private javax.swing.JTextField tfBeratnya;
+    private javax.swing.JTextField tfJKnya;
+    private javax.swing.JTextField tfLayanannya;
+    private javax.swing.JTextField tfNamanya;
+    private javax.swing.JTextField tfNoTelpnya;
+    private javax.swing.JTextField tfNoTransaksi;
+    private javax.swing.JTextField tfStatusnya;
+    private javax.swing.JTextField tfTanggalnya;
+    private javax.swing.JTextField tfTotalnya;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Admin;
 import model.HomeSuperAdmin;
+import model.Person;
 import model.Transaksi;
 import view.DataAdminView;
 import view.HomeSuperAdminView;
@@ -76,8 +77,8 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
     }
     
     public void showDataTransaksi() {
-        dafTransaksi = model.loadDataTransaksi();
-        String kolom[] = {"noTransaksi", "Nama", "Alamat", "No Telp", 
+        ArrayList result = model.loadDataTransaksi();
+        String kolom[] = {"No Transaksi", "Nama", "Alamat", "No Telp", 
             "Jenis Kelamin", "Layanan", "Status", "Tanggal", "Berat", "Total"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
             @Override
@@ -85,18 +86,20 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
                 return false;
               }
         };
-        for (int i = 0; i < dafTransaksi.size(); i++) {
+        ArrayList<Transaksi> transaksi = (ArrayList<Transaksi>) result.get(0);
+        ArrayList<Person> person = (ArrayList<Person>) result.get(1);
+        for (int i = 0; i < transaksi.size(); i++) {
             String no = Integer.toString((i+1));
-            String noTransaksi = dafTransaksi.get(i).getNoTransaksi();
-            String nama = dafTransaksi.get(i).getNama();
-            String alamat = dafTransaksi.get(i).getAlamat();
-            String noTelp = dafTransaksi.get(i).getNoTelp();
-            String JenisKelamin = dafTransaksi.get(i).getJenisKelamin();
-            String Layanan = dafTransaksi.get(i).getLayanan();
-            String Status = dafTransaksi.get(i).getStatus();
-            String Tanggal = dafTransaksi.get(i).getTanggal();
-            String Berat = Double.toString(dafTransaksi.get(i).getBerat());
-            String Total = Double.toString(dafTransaksi.get(i).getTotal());
+            String noTransaksi = transaksi.get(i).getNoTransaksi();
+            String nama = person.get(i).getNama();
+            String alamat = person.get(i).getAlamat();
+            String noTelp = person.get(i).getNoTelp();
+            String JenisKelamin = person.get(i).getJenisKelamin();
+            String Layanan = transaksi.get(i).getLayanan();
+            String Status = transaksi.get(i).getStatus();
+            String Tanggal = transaksi.get(i).getTanggal();
+            String Berat = Double.toString(transaksi.get(i).getBerat()) + " Kg";
+            String Total = Double.toString(transaksi.get(i).getTotal());
             
             String data[] = {noTransaksi,nama,alamat,noTelp,JenisKelamin,
                 Layanan,Status,Tanggal,Berat,Total};

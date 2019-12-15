@@ -4,22 +4,18 @@ package model;
 
 public class Transaksi {
 
-    private String noTransaksi, nama, alamat, noTelp, JenisKelamin, layanan, status, tanggal;
+    private String noTransaksi, idCust, layanan, status, tanggal;
     private double berat, total;
 
-    public Transaksi(String noTransaksi, String nama, String alamat, 
-            String noTelp, String JenisKelamin, String layanan, String status, 
+    public Transaksi(String noTransaksi, String idCust, String layanan, String status, 
             String tanggal, double berat, double total) {
         this.noTransaksi = noTransaksi;
-        this.nama = nama;
-        this.alamat = alamat;
-        this.noTelp = noTelp;
-        this.JenisKelamin = JenisKelamin;
         this.layanan = layanan;
         this.status = status;
         this.tanggal = tanggal;
         this.berat = berat;
         this.total = total;
+        this.idCust = idCust;
     }
 
     public String getNoTransaksi() {
@@ -28,38 +24,6 @@ public class Transaksi {
 
     public void setNoTransaksi(String noTransaksi) {
         this.noTransaksi = noTransaksi;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public String getAlamat() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
-    }
-
-    public String getNoTelp() {
-        return noTelp;
-    }
-
-    public void setNoTelp(String noTelp) {
-        this.noTelp = noTelp;
-    }
-
-    public String getJenisKelamin() {
-        return JenisKelamin;
-    }
-
-    public void setJenisKelamin(String JenisKelamin) {
-        this.JenisKelamin = JenisKelamin;
     }
 
     public String getLayanan() {
@@ -96,6 +60,14 @@ public class Transaksi {
 
     public double getTotal() {
         return total;
+    }
+
+    public String getIdCust() {
+        return idCust;
+    }
+
+    public void setIdCust(String idCust) {
+        this.idCust = idCust;
     }
 
     public void setTotal(double total) {
