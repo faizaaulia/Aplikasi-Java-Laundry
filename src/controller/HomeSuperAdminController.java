@@ -23,7 +23,6 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
     HomeSuperAdmin model;
     DataAdminView dataAdminView = new DataAdminView();;
     SuperAdminDataTransaksi transaksiView = new SuperAdminDataTransaksi();
-    ArrayList<Admin> dafAdmin = new ArrayList();
     ArrayList<Transaksi> dafTransaksi = new ArrayList();
     
     public HomeSuperAdminController(String nama) {
@@ -49,7 +48,7 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
     }
     
     public void showDataAdmin() {
-        dafAdmin = model.loadDataAdmin();
+        ArrayList<Admin> dafAdmin = model.loadDataAdmin();
         String kolom[] = {"No.", "Username", "Nama", "Alamat", 
             "No. Telp", "Jenis Kelamin", "Role"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
@@ -175,7 +174,7 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
                             "Error", JOptionPane.WARNING_MESSAGE);
                     else {
                         String jk = dataAdminView.getJK();
-                        Admin a = new Admin(nama,alamat,noTelp,jk,username,password,role);
+                        Admin a = new Admin(nama,alamat,noTelp,jk,username,password,role,dafTransaksi);
                         model.insertAdmin(a);
                         JOptionPane.showMessageDialog(superView, "Berhasil menambahkan " + nama, 
                                 "Sukses", JOptionPane.INFORMATION_MESSAGE);

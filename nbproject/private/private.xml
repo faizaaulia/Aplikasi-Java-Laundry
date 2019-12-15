@@ -5,8 +5,9 @@
         <group>
             <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/controller/HomeAdminController.java</file>
             <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/model/HomeAdmin.java</file>
-            <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/view/UpdateStatusTransaksiView.java</file>
-            <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/controller/LoginController.java</file>
+            <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/model/HomeSuperAdmin.java</file>
+            <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/model/Person.java</file>
+            <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/model/Admin.java</file>
             <file>file:/E:/Tel-U/Semester%203/PBO/BISMILLAH/tubesnyapbo/src/controller/HomeSuperAdminController.java</file>
         </group>
     </open-files>

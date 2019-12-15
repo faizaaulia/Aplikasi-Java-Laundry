@@ -27,8 +27,9 @@ public class HomeAdminView extends javax.swing.JFrame {
     public HomeAdminView() {
         initComponents();
         this.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+        labelIdCust.setVisible(false);
         
-        radioLk.setActionCommand("Laki - laki");
+        radioLk.setActionCommand("Laki - Laki");
         radioPr.setActionCommand("Perempuan");
         
         bgJK = new ButtonGroup();
@@ -47,7 +48,7 @@ public class HomeAdminView extends javax.swing.JFrame {
     public void setLabelHi(String labelHi) {
         this.labelHi.setText("Hi, " + labelHi);
     }
-
+    
     public ButtonGroup getBgJK() {
         return bgJK;
     }
@@ -108,8 +109,40 @@ public class HomeAdminView extends javax.swing.JFrame {
         return Double.parseDouble(tfTotal.getText());
     }
 
+    public void setTfAlamat(String tfAlamat) {
+        this.tfAlamat.setText(tfAlamat);
+    }
+
+    public void setTfNama(String tfNama) {
+        this.tfNama.setText(tfNama);
+    }
+
+    public void setTfNoHp(String tfNoHp) {
+        this.tfNoHp.setText(tfNoHp);
+    }
+
     public void setTfTotal(String tfTotal) {
         this.tfTotal.setText(tfTotal);
+    }
+    
+    public void setTfBerat(String tfBerat) {
+        this.tfBerat.setText(tfBerat);
+    }
+
+    public String getLabelIdCust() {
+        return labelIdCust.getText();
+    }
+
+    public void setLabelIdCust(String labelIdCust) {
+        this.labelIdCust.setText(labelIdCust);
+    }
+
+    public JComboBox<String> getComboCari() {
+        return comboCari;
+    }
+    
+    public String gettfCariPelanggan() {
+        return tfCariPelanggan.getText();
     }
     
     public void addActionListener(HomeAdminController a){
@@ -118,8 +151,13 @@ public class HomeAdminView extends javax.swing.JFrame {
         btnReset.addActionListener(a);
         btnLogout.addActionListener(a);
         btnCari.addActionListener(a);
+        btnCariPelanggan.addActionListener(a);
     } 
 
+    public JButton getBtnCariPelanggan() {
+        return btnCariPelanggan;
+    }
+    
     public JButton getBtnCari() {
         return btnCari;
     }    
@@ -149,6 +187,7 @@ public class HomeAdminView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         radioLk = new javax.swing.JRadioButton();
         radioPr = new javax.swing.JRadioButton();
+        labelIdCust = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         tfBerat = new javax.swing.JTextField();
@@ -172,6 +211,11 @@ public class HomeAdminView extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnCari = new javax.swing.JButton();
         tfCari = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        tfCariPelanggan = new javax.swing.JTextField();
+        btnCariPelanggan = new javax.swing.JButton();
+        comboCari = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -195,6 +239,8 @@ public class HomeAdminView extends javax.swing.JFrame {
         bgJK.add(radioPr);
         radioPr.setText("Perempuan");
 
+        labelIdCust.setText("null");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,11 +259,14 @@ public class HomeAdminView extends javax.swing.JFrame {
                             .addComponent(tfAlamat)
                             .addComponent(tfNama)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioLk)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioPr)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radioLk)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radioPr))
+                            .addComponent(labelIdCust))
                         .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -241,6 +290,8 @@ public class HomeAdminView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(radioLk)
                     .addComponent(radioPr))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelIdCust)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -314,7 +365,7 @@ public class HomeAdminView extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(btnTambah)
                     .addComponent(cbBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         labelTanggal.setText("Tanggal");
@@ -341,6 +392,42 @@ public class HomeAdminView extends javax.swing.JFrame {
         btnLogout.setText("LOGOUT");
 
         btnCari.setText("CARI TRANSAKSI");
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cari Data Pelanggan"));
+
+        jLabel9.setText("ID / Nama Pelanggan");
+
+        btnCariPelanggan.setText("CARI");
+
+        comboCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nama Pelanggan", "ID Pelanggan" }));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCariPelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel9)
+                        .addComponent(tfCariPelanggan)
+                        .addComponent(comboCari, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCariPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCariPelanggan)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -372,6 +459,8 @@ public class HomeAdminView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -396,10 +485,16 @@ public class HomeAdminView extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelHi2)
@@ -408,7 +503,7 @@ public class HomeAdminView extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCari)
                         .addComponent(tfCari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -420,12 +515,14 @@ public class HomeAdminView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgJK;
     private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnCariPelanggan;
     private javax.swing.JButton btnHitung;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnTambah;
     private javax.swing.JComboBox<String> cbBayar;
     private javax.swing.JComboBox<String> cbLayanan;
+    private javax.swing.JComboBox<String> comboCari;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -434,8 +531,10 @@ public class HomeAdminView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -444,6 +543,7 @@ public class HomeAdminView extends javax.swing.JFrame {
     private javax.swing.JLabel labelHi;
     private javax.swing.JLabel labelHi1;
     private javax.swing.JLabel labelHi2;
+    private javax.swing.JLabel labelIdCust;
     private javax.swing.JLabel labelTanggal;
     private javax.swing.JRadioButton radioLk;
     private javax.swing.JRadioButton radioPr;
@@ -451,6 +551,7 @@ public class HomeAdminView extends javax.swing.JFrame {
     private javax.swing.JTextField tfAlamat;
     private javax.swing.JTextField tfBerat;
     private javax.swing.JTextField tfCari;
+    private javax.swing.JTextField tfCariPelanggan;
     private javax.swing.JTextField tfNama;
     private javax.swing.JTextField tfNoHp;
     private javax.swing.JTextField tfTotal;

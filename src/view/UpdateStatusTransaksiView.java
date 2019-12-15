@@ -20,7 +20,7 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
      */
     public UpdateStatusTransaksiView() {
         initComponents();
-        buttonUpdate.setVisible(false);
+        btnUpdate.setVisible(false);
     }
 
     /**
@@ -53,7 +53,7 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
         labelTotalnya = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        buttonUpdate = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -106,10 +106,10 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
 
         labelTotalnya.setEditable(false);
 
-        buttonUpdate.setText("UPDATE");
-        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonUpdateActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
@@ -169,7 +169,7 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonUpdate)))
+                        .addComponent(btnUpdate)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -211,7 +211,7 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonUpdate)
+                    .addComponent(btnUpdate)
                     .addComponent(btnBack))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -220,12 +220,12 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonUpdateActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    public JButton getButtonUpdate() {
-        return buttonUpdate;
+    public JButton getBtnUpdate() {
+        return btnUpdate;
     }
     
     public JButton getBtnBack() {
@@ -233,7 +233,7 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
     }
 
     public void setButtonUpdate(JButton buttonUpdate) {
-        this.buttonUpdate = buttonUpdate;
+        this.btnUpdate = buttonUpdate;
     }
 
     public void setLabelAlamatnya(String labelAlamatnya) {
@@ -273,13 +273,13 @@ public class UpdateStatusTransaksiView extends javax.swing.JFrame {
     }
 
     public void addActionListener(HomeAdminController aThis) {
-        buttonUpdate.addActionListener(aThis);
+        btnUpdate.addActionListener(aThis);
         btnBack.addActionListener(aThis);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton buttonUpdate;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
