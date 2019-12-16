@@ -10,12 +10,12 @@ import java.util.logging.Logger;
 
 /** @author faizaaulia */
 
-public class HomeAdmin {
+public class HomeAdminModel {
     
     private Connection con;
     Koneksi conn;
     
-    public HomeAdmin() {
+    public HomeAdminModel() {
         conn = new Koneksi();
         conn.connect();
     }
@@ -30,7 +30,7 @@ public class HomeAdmin {
             if (rs.next())
                 return rs.getInt("lastID");
         } catch (SQLException ex) {
-            Logger.getLogger(HomeAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeAdminModel.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
         return 0;
@@ -85,7 +85,7 @@ public class HomeAdmin {
             System.out.println("DATA LOADED");
             return result;
         } catch (SQLException ex) {
-            Logger.getLogger(HomeSuperAdmin.class.getName()).
+            Logger.getLogger(HomeSuperAdminModel.class.getName()).
                     log(Level.SEVERE, null, ex);
             return null;
         }
@@ -100,7 +100,7 @@ public class HomeAdmin {
             rs = s.executeQuery(query);
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(HomeAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeAdminModel.class.getName()).log(Level.SEVERE, null, ex);
             return rs;
         }
     }
@@ -124,7 +124,7 @@ public class HomeAdmin {
             rs = s.executeQuery(query);
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
             return rs;
         }
     }
@@ -135,6 +135,7 @@ public class HomeAdmin {
         ResultSet rs;
         try {
             String query = "SELECT * FROM tb_customer WHERE nama_cust = '"+find+"' ORDER BY no DESC";
+            System.out.println(query);
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
             while (rs.next()) {
@@ -143,13 +144,14 @@ public class HomeAdmin {
                 String alamat = rs.getString(4);
                 String noTelp = rs.getString(5);
                 String jenisKelamin = rs.getString(6);
+                System.out.println(id);
                 Customer c = new Customer(nama,alamat,noTelp,jenisKelamin,id);
                 dafPelanggan.add(c);
             }
             System.out.println("DATA LOADED");
             return dafPelanggan;
         } catch (SQLException ex) {
-            Logger.getLogger(HomeSuperAdmin.class.getName()).
+            Logger.getLogger(HomeSuperAdminModel.class.getName()).
                     log(Level.SEVERE, null, ex);
             return null;
         }
@@ -165,7 +167,7 @@ public class HomeAdmin {
             if (rs.next())
                 return rs.getInt("lastID");
         } catch (SQLException ex) {
-            Logger.getLogger(HomeAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeAdminModel.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
         return 0;
@@ -178,7 +180,6 @@ public class HomeAdmin {
                     + "'"+c.getNama()+"','"+c.getAlamat()+"','"+c.getNoTelp()+"',"
                     + "'"+c.getJenisKelamin()+"')";
             Statement s = con.createStatement();
-            System.out.println(query);
             s.execute(query);
         } catch(SQLException se){
             System.out.println(se);

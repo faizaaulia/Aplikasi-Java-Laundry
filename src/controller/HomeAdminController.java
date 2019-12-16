@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Customer;
-import model.HomeAdmin;
+import model.HomeAdminModel;
 import model.Person;
 import model.Transaksi;
 import view.CariPelangganView;
@@ -32,18 +32,18 @@ import view.UpdateStatusTransaksiView;
  */
 public class HomeAdminController extends MouseAdapter implements ActionListener {
     HomeAdminView view;
-    HomeAdmin model;
+    HomeAdminModel model;
     UpdateStatusTransaksiView transaksiView;
     CariPelangganView cariPelangganView;
     Transaksi b;
-    private String no;
+    private String idPel;
     
     public HomeAdminController(String nama) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYY");
         Date date = new Date();
         String tgl = dateFormat.format(date);
         view = new HomeAdminView();
-        model = new HomeAdmin();
+        model = new HomeAdminModel();
         view.addActionListener(this);
         view.setVisible(true);
         view.setLabelHi(nama);
@@ -62,7 +62,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
         view.getCbBayar().setSelectedIndex(0);
     }
 
-    public Transaksi cek(Transaksi b) {
+    public Transaksi cek(Transaksi b,String idPel) {
         String nama = view.getTfNama();
         String alamat = view.getTfAlamat();
         String noTelp = view.getTfNoHp();
@@ -106,13 +106,13 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 Date date = new Date();
                 String tglOrder = dateFormat.format(date);
-                String idCust = "CS00" + (model.getLastIdCust());
+                String idCust = idPel;
                 return b = new Transaksi(noTransaksi,idCust,layanan,pembayaran,tglOrder,x,total);
             }
         }
     }
     
-    public void showDataTransaksi() {
+    private void showDataTransaksi() {
         ArrayList result = model.loadDataTransaksi();
         String kolom[] = {"No Transaksi", "Nama", "Alamat", "No Telp", 
             "Jenis Kelamin", "Layanan", "Status", "Tanggal", "Berat", "Total"};
@@ -198,43 +198,46 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
                         "Error", JOptionPane.WARNING_MESSAGE);
                 else {
                     ArrayList<Customer> dafPelanggan = model.loadDataPelanggan(searchBy);
-                    if (dafPelanggan.size() == 0) {
-                        JOptionPane.showMessageDialog(view, "Pelanggan " + searchBy + " tidak ada!",
-                            "Error", JOptionPane.WARNING_MESSAGE);
-                    } else if (dafPelanggan.size() == 1) {
-                        JOptionPane.showMessageDialog(view, "Menambahkan pelanggan ke transaksi", 
-                            "Sukses", JOptionPane.INFORMATION_MESSAGE);
-                        view.setLabelIdCust(dafPelanggan.get(0).getIdCust());
-                        view.setTfNama(dafPelanggan.get(0).getNama());
-                        view.setTfAlamat(dafPelanggan.get(0).getAlamat());
-                        view.setTfNoHp(dafPelanggan.get(0).getNoTelp());
-                        if (dafPelanggan.get(0).getJenisKelamin().equals("Laki - Laki"))
-                            view.getRadioLk().setSelected(true);
-                        else
-                            view.getRadioPr().setSelected(true);
-                    } else {
-                        cariPelangganView = new CariPelangganView();
-                        cariPelangganView.setVisible(true);
-                        cariPelangganView.addActionListenter(this);
-                        String kolom[] = {"No.","ID Cust", "Nama", "Alamat", "No Telp", "Jenis Kelamin"};
-                        DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
-                            @Override
-                            public boolean isCellEditable(int rowIndex, int mColIndex) {
-                                return false;
-                              }
-                        };
-                        for (int i = 0; i < dafPelanggan.size(); i++) {
-                            String no = Integer.toString((i+1));
-                            String id = dafPelanggan.get(i).getIdCust();
-                            String nama = dafPelanggan.get(i).getNama();
-                            String alamat = dafPelanggan.get(i).getAlamat();
-                            String noTelp = dafPelanggan.get(i).getNoTelp();
-                            String JenisKelamin = dafPelanggan.get(i).getJenisKelamin();
-
-                            String data[] = {no,id,nama,alamat,noTelp,JenisKelamin};
-                            dtm.addRow(data);
-                        }
-                        cariPelangganView.getTableCariPelanggan().setModel(dtm);
+                    switch (dafPelanggan.size()) {
+                        case 0:
+                            JOptionPane.showMessageDialog(view, "Pelanggan " + searchBy + " tidak ada!",
+                                    "Error", JOptionPane.WARNING_MESSAGE);
+                            break;
+                        case 1:
+                            JOptionPane.showMessageDialog(view, "Menambahkan pelanggan ke transaksi",
+                                    "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                            view.setLabelIdCust(dafPelanggan.get(0).getIdCust());
+                            idPel = dafPelanggan.get(0).getIdCust();
+                            view.setTfNama(dafPelanggan.get(0).getNama());
+                            view.setTfAlamat(dafPelanggan.get(0).getAlamat());
+                            view.setTfNoHp(dafPelanggan.get(0).getNoTelp());
+                            if (dafPelanggan.get(0).getJenisKelamin().equals("Laki - Laki"))
+                                view.getRadioLk().setSelected(true);
+                            else
+                                view.getRadioPr().setSelected(true);
+                            break;
+                        default:
+                            cariPelangganView = new CariPelangganView();
+                            cariPelangganView.setVisible(true);
+                            cariPelangganView.addActionListenter(this);
+                            String kolom[] = {"No.","ID Cust", "Nama", "Alamat", "No Telp", "Jenis Kelamin"};
+                            DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
+                                @Override
+                                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                                    return false;
+                                }
+                            };  for (int i = 0; i < dafPelanggan.size(); i++) {
+                                String no = Integer.toString((i+1));
+                                String id = dafPelanggan.get(i).getIdCust();
+                                String nama = dafPelanggan.get(i).getNama();
+                                String alamat = dafPelanggan.get(i).getAlamat();
+                                String noTelp = dafPelanggan.get(i).getNoTelp();
+                                String JenisKelamin = dafPelanggan.get(i).getJenisKelamin();
+                                
+                                String data[] = {no,id,nama,alamat,noTelp,JenisKelamin};
+                                dtm.addRow(data);
+                            }   cariPelangganView.getTableCariPelanggan().setModel(dtm);
+                            break;
                     }
                 }
                 break;
@@ -250,6 +253,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
                             JOptionPane.showMessageDialog(view, "Menambahkan pelanggan ke transaksi", 
                                 "Sukses", JOptionPane.INFORMATION_MESSAGE);
                             view.setLabelIdCust(rs.getString(2));
+                            idPel = rs.getString(2);
                             view.setTfNama(rs.getString(3));
                             view.setTfAlamat(rs.getString(4));
                             view.setTfNoHp(rs.getString(5));
@@ -274,9 +278,9 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
         Object source = e.getSource();
         
         if (source.equals(view.getBtnHitung())) {
-            cek(b);
+            cek(b,idPel);
         } else if (source.equals(view.getBtnTambah())) {
-            if (cek(b) != null) {
+            if (cek(b,idPel) != null) {
                 if (view.getLabelIdCust().equals("null")) {
                     String nama = view.getTfNama();
                     String alamat = view.getTfAlamat();
@@ -286,7 +290,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
                     Customer c = new Customer(nama,alamat,no,jenisKelamin,id);
                     model.insertCust(c);
                 }
-                model.insertTransaksi(cek(b));
+                model.insertTransaksi(cek(b,idPel));
                 view.setLabelIdCust("null");
                 JOptionPane.showMessageDialog(view, "Berhasil menambahkan transaksi baru", 
                     "Sukses", JOptionPane.INFORMATION_MESSAGE);

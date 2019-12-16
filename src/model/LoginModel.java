@@ -9,11 +9,11 @@ import java.util.logging.Logger;
 
 /** @author faizaaulia */
 
-public class Login {
+public class LoginModel {
     private Connection con;
     Koneksi conn;
     
-    public Login() {
+    public LoginModel() {
         conn = new Koneksi();
         conn.connect();
     }
@@ -28,7 +28,7 @@ public class Login {
             rs = s.executeQuery(query);
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
             return rs;
         }
     }

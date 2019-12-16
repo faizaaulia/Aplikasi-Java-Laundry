@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -10,45 +11,82 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Admin;
-import model.HomeSuperAdmin;
+import model.HomeSuperAdminModel;
 import model.Person;
 import model.Transaksi;
-import view.DataAdminView;
+import view.AddAdminView;
 import view.HomeSuperAdminView;
-import view.SuperAdminDataTransaksi;
 
 /** @author faizaaulia */
 
 public class HomeSuperAdminController extends MouseAdapter implements ActionListener {
-    HomeSuperAdminView superView;
-    HomeSuperAdmin model;
-    DataAdminView dataAdminView = new DataAdminView();;
-    SuperAdminDataTransaksi transaksiView = new SuperAdminDataTransaksi();
+    HomeSuperAdminView view;
+    HomeSuperAdminModel model;
+    AddAdminView addView;
     ArrayList<Transaksi> dafTransaksi = new ArrayList();
     
     public HomeSuperAdminController(String nama) {
-        superView = new HomeSuperAdminView();
-        model = new HomeSuperAdmin();
-        superView.addActionListener(this);
-        superView.setVisible(true);
-        superView.setLabelHi(nama);
+        view = new HomeSuperAdminView();
+        model = new HomeSuperAdminModel();
+        showDataAdmin();
+        showDataPelanggan();
+        showDataTransaksi();
+        view.addActionListener(this);
+        view.setVisible(true);
+        view.setLabelHi(nama);
     }
     
-    public void HomeDataAdmin() {
-        //dataAdminView = new DataAdminView();
-        model = new HomeSuperAdmin();
-        dataAdminView.addActionListener(this);
-        dataAdminView.setVisible(true);
+    public void addAdmin() {
+        String username = addView.getTfUsername();
+        String password = addView.getTfPassword();
+        String role = Integer.toString(addView.getCbRole().getSelectedIndex());
+        String nama = addView.getTfNama();
+        String alamat = addView.getTfAlamat();
+        String noTelp = addView.getTfNoTelp();
+        boolean bgNotNull = addView.getRadioLk().isSelected() || 
+            addView.getRadioPr().isSelected();
+        boolean userExist = false;
+        try {
+            userExist = model.usernameExist(username).next();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeSuperAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (username.equals("") || password.equals("") || nama.equals("")
+            || alamat.equals("") || noTelp.equals("") || !bgNotNull)
+            JOptionPane.showMessageDialog(addView, "Lengkapi data",
+                "Error", JOptionPane.WARNING_MESSAGE);
+        else {
+            if (username.length() < 5 || password.length() < 5)
+                JOptionPane.showMessageDialog(addView, "Username atau password invalid! (min. 5)", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+            else if (nama.length() < 3)
+                JOptionPane.showMessageDialog(addView, "Nama invalid!", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+            else if (alamat.length() < 3)
+                JOptionPane.showMessageDialog(addView, "Alamat invalid!", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+            else if (noTelp.length() < 12)
+                JOptionPane.showMessageDialog(addView, "No. Telp. invalid!", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+            else {
+                if (userExist)
+                    JOptionPane.showMessageDialog(addView, "Username sudah ada!", 
+                    "Error", JOptionPane.WARNING_MESSAGE);
+                else {
+                    String jk = addView.getJK();
+                    Admin a = new Admin(nama,alamat,noTelp,jk,username,password,role,dafTransaksi);
+                    model.insertAdmin(a);
+                    JOptionPane.showMessageDialog(addView, "Berhasil menambahkan " + nama, 
+                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                    addView.dispose();
+                    resetForm();
+                    showDataAdmin();
+                }
+            }
+        }
     }
     
-    public void DataTransaksi() {
-        //transaksiView = new SuperAdminDataTransaksi();
-        model = new HomeSuperAdmin();
-        transaksiView.addActionListenet(this);
-        transaksiView.setVisible(true);
-    }
-    
-    public void showDataAdmin() {
+    private void showDataAdmin() {
         ArrayList<Admin> dafAdmin = model.loadDataAdmin();
         String kolom[] = {"No.", "Username", "Nama", "Alamat", 
             "No. Telp", "Jenis Kelamin", "Role"};
@@ -73,10 +111,37 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
             String data[] = {no,username,nama,alamat,noTelp,jk,role};
             dtm.addRow(data);
         }
-        dataAdminView.getTableAdmin().setModel(dtm);
+        view.getTableAdmin().setModel(dtm);
     }
     
-    public void showDataTransaksi() {
+    private void showDataPelanggan() {
+        ResultSet rs = model.loadDataPelanggan();
+        String kolom[] = {"Nama", "Alamat", "No Telp", "Jenis Kelamin", 
+            "Total Transaksi"};
+        DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+              }
+        };
+        try {
+            while (rs.next()) {
+                String nama = rs.getString(1);
+                String alamat = rs.getString(2);
+                String no = rs.getString(3);
+                String jk = rs.getString(4);
+                String total = rs.getString(5);
+                
+                String data[] = {nama,alamat,no,jk,total};
+                dtm.addRow(data);
+            }
+            view.getTablePelanggan().setModel(dtm);
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeSuperAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void showDataTransaksi() {
         ArrayList result = model.loadDataTransaksi();
         String kolom[] = {"No Transaksi", "Nama", "Alamat", "No Telp", 
             "Jenis Kelamin", "Layanan", "Status", "Tanggal", "Berat", "Total"};
@@ -105,92 +170,35 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
                 Layanan,Status,Tanggal,Berat,Total};
             dtm.addRow(data);
         }
-        transaksiView.getTableTransaksi().setModel(dtm);
+        view.getTableTransaksi().setModel(dtm);
     }
 
     public void resetForm() {
-        dataAdminView.getBgJK().clearSelection();
-        dataAdminView.getCbRole().setSelectedIndex(0);
-        dataAdminView.setTfNama("");
-        dataAdminView.setTfAlamat("");
-        dataAdminView.setTfNoTelp("");
-        dataAdminView.setTfUsername("");
-        dataAdminView.setTfPassword("");
+        addView.getBgJK().clearSelection();
+        addView.getCbRole().setSelectedIndex(0);
+        addView.setTfNama("");
+        addView.setTfAlamat("");
+        addView.setTfNoTelp("");
+        addView.setTfUsername("");
+        addView.setTfPassword("");
     }
-    
+   
     @Override
     public void actionPerformed(ActionEvent ae) {
         Object source = ae.getSource();
         
-        if (source.equals(superView.getBtnDataAdmin())) {
-            superView.dispose();
-            this.HomeDataAdmin();
-            this.showDataAdmin();
-        } else if (source.equals(superView.getBtnDataTransaksi())) {
-            superView.dispose();
-            this.DataTransaksi();
-            this.showDataTransaksi();
-        } else if (source.equals(dataAdminView.getBtnBack())) {
-            dataAdminView.dispose();
-            superView.setVisible(true);
-        } else if(source.equals(transaksiView.getBtnBack())) {
-            transaksiView.dispose();
-            superView.setVisible(true);
-        } else if (source.equals(dataAdminView.getBtnSimpan())) {
-            String username = dataAdminView.getTfUsername();
-            String password = dataAdminView.getTfPassword();
-            String role = Integer.toString(dataAdminView.getCbRole().getSelectedIndex());
-            String nama = dataAdminView.getTfNama();
-            String alamat = dataAdminView.getTfAlamat();
-            String noTelp = dataAdminView.getTfNoTelp();
-            boolean bgNotNull = dataAdminView.getRadioLk().isSelected() || 
-                    dataAdminView.getRadioPr().isSelected();
-            boolean userExist = false;
-            try {
-                if (model.usernameExist(username).next())
-                    userExist = true;
-                else
-                    userExist = false;
-            } catch (SQLException ex) {
-                Logger.getLogger(HomeSuperAdminController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (username.equals("") || password.equals("") || nama.equals("")
-                    || alamat.equals("") || noTelp.equals("") || !bgNotNull)
-                JOptionPane.showMessageDialog(superView, "Lengkapi data", 
-                            "Error", JOptionPane.WARNING_MESSAGE);
-            else {
-                if (username.length() < 5 || password.length() < 5)
-                    JOptionPane.showMessageDialog(superView, "Username atau password invalid! (min. 5)", 
-                            "Error", JOptionPane.WARNING_MESSAGE);
-                else if (nama.length() < 3)
-                    JOptionPane.showMessageDialog(superView, "Nama invalid!", 
-                            "Error", JOptionPane.WARNING_MESSAGE);
-                else if (alamat.length() < 3)
-                    JOptionPane.showMessageDialog(superView, "Alamat invalid!", 
-                            "Error", JOptionPane.WARNING_MESSAGE);
-                else if (noTelp.length() < 12)
-                    JOptionPane.showMessageDialog(superView, "No. Telp. invalid!", 
-                            "Error", JOptionPane.WARNING_MESSAGE);
-                else {
-                    if (userExist)
-                        JOptionPane.showMessageDialog(superView, "Username sudah ada!", 
-                            "Error", JOptionPane.WARNING_MESSAGE);
-                    else {
-                        String jk = dataAdminView.getJK();
-                        Admin a = new Admin(nama,alamat,noTelp,jk,username,password,role,dafTransaksi);
-                        model.insertAdmin(a);
-                        JOptionPane.showMessageDialog(superView, "Berhasil menambahkan " + nama, 
-                                "Sukses", JOptionPane.INFORMATION_MESSAGE);
-                        resetForm();
-                        showDataAdmin();
-                    }
-                }
-            }
-        } else if (source.equals(dataAdminView.getBtnReset())) 
-            resetForm();
-        else if (source.equals(superView.getBtnLogout())) {
-            superView.dispose();
+        if (source.equals(view.getBtnTambah())) {
+            addView = new AddAdminView();
+            addView.addActionListener(this);
+            addView.setVisible(true);
+        } else if (source.equals(view.getBtnLogout())) {
+            view.dispose();
             new LoginController();
-        }
+        } else if (source.equals(addView.getBtnSimpanAdmin())) {
+            addAdmin();
+        } else if (source.equals(addView.getBtnResetAdmin())) 
+            resetForm();
+        else if (source.equals(addView.getBtnBack()))
+            addView.dispose();
     }
 }

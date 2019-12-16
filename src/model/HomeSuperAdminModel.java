@@ -10,12 +10,12 @@ import java.util.logging.Logger;
 
 /** @author faizaaulia */
 
-public class HomeSuperAdmin {
+public class HomeSuperAdminModel {
     static ArrayList<Transaksi> dafTransaksi = new ArrayList();
     private Connection con;
     Koneksi conn;
     
-    public HomeSuperAdmin() {
+    public HomeSuperAdminModel() {
         conn = new Koneksi();
         conn.connect();
     }
@@ -43,7 +43,7 @@ public class HomeSuperAdmin {
             System.out.println("DATA LOADED");
             return dafAdmin;
         } catch (SQLException ex) {
-            Logger.getLogger(HomeSuperAdmin.class.getName()).
+            Logger.getLogger(HomeSuperAdminModel.class.getName()).
                     log(Level.SEVERE, null, ex);
             return null;
         }
@@ -71,7 +71,7 @@ public class HomeSuperAdmin {
             rs = s.executeQuery(query);
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
             return rs;
         }
     }
@@ -111,7 +111,26 @@ public class HomeSuperAdmin {
             System.out.println("DATA LOADED");
             return result;
         } catch (SQLException ex) {
-            Logger.getLogger(HomeSuperAdmin.class.getName()).
+            Logger.getLogger(HomeSuperAdminModel.class.getName()).
+                    log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public ResultSet loadDataPelanggan() {
+        con = conn.getKoneksi();
+        ResultSet rs;
+        try {
+            String query = "SELECT nama_cust,alamat_cust,no_telp_cust,"
+                    + "jenisKel_cust,SUM(total) AS 'Total Transaksi' "
+                    + "FROM tb_customer JOIN tb_transaksi USING (id_cust) "
+                    + "GROUP BY nama_cust,alamat_cust,no_telp_cust,jenisKel_cust";
+            Statement s = con.createStatement();
+            rs = s.executeQuery(query);
+            System.out.println("DATA LOADED");
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeSuperAdminModel.class.getName()).
                     log(Level.SEVERE, null, ex);
             return null;
         }

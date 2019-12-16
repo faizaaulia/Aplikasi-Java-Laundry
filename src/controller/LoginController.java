@@ -1,22 +1,24 @@
 package controller;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.Login;
+import model.LoginModel;
 import view.LoginView;
 
 /** @author faizaaulia */
 
 public class LoginController extends MouseAdapter implements ActionListener {
     LoginView view;
-    Login model;
+    LoginModel model;
 
     public LoginController() {
         view = new LoginView();
-        model = new Login();
+        model = new LoginModel();
         view.addActionListener(this);
         view.setVisible(true);
         view.setFeel();
@@ -48,7 +50,7 @@ public class LoginController extends MouseAdapter implements ActionListener {
                 } else
                     JOptionPane.showMessageDialog(view, "Username atau Password kosong!", 
                             "Error", JOptionPane.WARNING_MESSAGE);
-            } catch (Exception e) {
+            } catch (HeadlessException | SQLException e) {
                 JOptionPane.showMessageDialog(view, "Tidak terhubung ke database", 
                             "Error", JOptionPane.WARNING_MESSAGE);
                 System.out.println(e.getMessage());
