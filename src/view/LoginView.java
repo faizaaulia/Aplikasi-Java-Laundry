@@ -1,7 +1,6 @@
 package view;
 
 import controller.LoginController;
-import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
@@ -151,7 +150,7 @@ public class LoginView extends javax.swing.JFrame {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException 
                 | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SuperAdminDataTransaksi.class.getName())
+            java.util.logging.Logger.getLogger(LoginView.class.getName())
                     .log(java.util.logging.Level.SEVERE, null, ex);
         }
     }

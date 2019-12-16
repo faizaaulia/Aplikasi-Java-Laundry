@@ -150,6 +150,7 @@ public class AddAdminView extends javax.swing.JFrame {
         btnBackAddAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tambah Admin");
         setResizable(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Admin"));

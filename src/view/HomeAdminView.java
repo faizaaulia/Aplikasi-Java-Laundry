@@ -225,6 +225,7 @@ public class HomeAdminView extends javax.swing.JFrame {
         btnRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Data Transaksi");
         setResizable(false);
 
         labelHi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

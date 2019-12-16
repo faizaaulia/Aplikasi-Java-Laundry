@@ -24,7 +24,6 @@ import model.Person;
 import model.Transaksi;
 import view.CariPelangganView;
 import view.HomeAdminView;
-import view.UpdateStatusTransaksiView;
 
 /**
  *
@@ -33,7 +32,6 @@ import view.UpdateStatusTransaksiView;
 public class HomeAdminController extends MouseAdapter implements ActionListener {
     HomeAdminView view;
     HomeAdminModel model;
-    UpdateStatusTransaksiView transaksiView;
     CariPelangganView cariPelangganView;
     Transaksi b;
     private String idPel;
@@ -207,6 +205,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
                             JOptionPane.showMessageDialog(view, "Menambahkan pelanggan ke transaksi",
                                     "Sukses", JOptionPane.INFORMATION_MESSAGE);
                             view.setLabelIdCust(dafPelanggan.get(0).getIdCust());
+                            System.out.println(view.getLabelIdCust());
                             idPel = dafPelanggan.get(0).getIdCust();
                             view.setTfNama(dafPelanggan.get(0).getNama());
                             view.setTfAlamat(dafPelanggan.get(0).getAlamat());
@@ -317,6 +316,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
             } else {
                 view.setLabelIdCust(cariPelangganView.getTableCariPelanggan().
                         getValueAt(baris, 1).toString());
+                idPel = view.getLabelIdCust();
                 view.setTfNama(cariPelangganView.getTableCariPelanggan().
                         getValueAt(baris, 2).toString());
                 view.setTfAlamat(cariPelangganView.getTableCariPelanggan().

@@ -43,7 +43,6 @@ public class HomeAdminModel {
                     + "'"+a.getNoTransaksi()+"','"+a.getIdCust()+"','"+a.getLayanan()+"'"
                     + ",'"+a.getStatus()+"','"+a.getTanggal()+"','"+a.getBerat()+"','"+a.getTotal()+"')";
             Statement s = con.createStatement();
-            System.out.println(query);
             s.execute(query);
         } catch(SQLException se){
             System.out.println(se);
@@ -135,7 +134,6 @@ public class HomeAdminModel {
         ResultSet rs;
         try {
             String query = "SELECT * FROM tb_customer WHERE nama_cust = '"+find+"' ORDER BY no DESC";
-            System.out.println(query);
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
             while (rs.next()) {

@@ -97,6 +97,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         tableTransaksi = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dashboard");
 
         labelHi.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
         labelHi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
